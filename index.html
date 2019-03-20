@@ -23,7 +23,7 @@ var init = {
             setTimeout(init.refresh, init.refreshInterval);
             init.frameID.location.reload();
             if (init.frameID.getElementsByClassName('grandTotal grandTotalTop')[0].innerText !== 'Grand Totals(0 records)') {
-                new Notification("L2 Tickets", init.notifOptions);
+                new Notification("L2 Tickets", init.notifOptions); setTimeout(refresh, refreshInterval);
             }
         }
     }
