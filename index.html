@@ -1,29 +1,44 @@
-var init = {
-        refreshInterval: 10000,
-        frameID: document.getElementById("ext-comp-1011").contentWindow.document,
-        fReport: document.getElementById("ext-comp-1011").contentWindow.document.getElementsByClassName('bFilterReport')[0],
-        notifOptions: {
-            body: "Unassigned tickets in the queue",
-            icon: "https://brand.pearson.com/etc/designs/corporate/global/brand/favicon.ico"
-        },
-        run: function() {
-            if (init.frameID.getElementById('scope').value !== "queue") {
-                alert("Please ensure you are in the 'Queue owned cases' report");
-                throw new Error('Incorrect queue selected');
-            } else {
-                if (document.getElementById('ext-gen43').childNodes[0].innerText !== "Auto refresh running every " + init.refreshInterval / 1000 + " seconds") {
-                    document.getElementById('scc_widget_Quick_Create_button').insertAdjacentHTML("beforebegin", "<p style=color:white>Auto refresh running every " + init.refreshInterval / 1000 + " seconds</p>");
-                } else {
-                    document.getElementsByTagName('p')[0].remove();
-                    throw new Error("stopping auto refresh");
-                }
-            }
-        },
-        refresh: function() {
-            setTimeout(init.refresh, init.refreshInterval);
-            init.frameID.location.reload();
-            if (init.frameID.getElementsByClassName('grandTotal grandTotalTop')[0].innerText !== 'Grand Totals(0 records)') {
-                new Notification("L2 Tickets", init.notifOptions); setTimeout(refresh, refreshInterval);
-            }
-        }
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>font-smooth: always;</style>
+</head>
+<body id="body" class="vsc-initialized" style="opacity: 1;background-image: none;margin-top: 0px;margin-right: 0px;margin-left: 0px;margin-bottom: 0px;">
+<script type="text/javascript" language="javascript">
+function eventWindowLoaded() {
+    canvasApp()
+}
+
+function canvasSupport(n) {
+    return !!n.getContext
+}
+
+function canvasApp() {
+    var n = document.getElementById("myCanvas");
+    if (canvasSupport(myCanvas)) {
+        var e = n.getContext("2d"),
+            t = n.width = window.innerWidth,
+            a = n.height = window.innerHeight,
+            b = Math.floor(t / 16 + 1),
+            i = Array(b).join(0).split("");
+        "undefined" != typeof Game_Interval && clearInterval(Game_interval), Game_Interval = setInterval(o, 50)
     }
+
+    function o() {
+        e.fillStyle = "rgba(0,0,0,.20)", 
+		e.fillRect(0, 0, t, a), 
+		e.fillStyle = "#00FF00", 
+		e.font = "16px sans-serif", 
+		i.map(function(val, ind) {
+            text = String.fromCharCode(48 + 2 * Math.random()), x = 16 * ind, e.fillText(text, x, val), val > a * 10 * Math.random() ? i[ind] = 0 : i[ind] = val + 14
+        })
+    }
+}
+window.addEventListener("load", eventWindowLoaded, !1);
+	</script>
+<canvas class="background" id="myCanvas" style="opacity: 1;background-image: none;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px;" width="100%" height="100%"></canvas>
+
+
+</body>
+</html>
