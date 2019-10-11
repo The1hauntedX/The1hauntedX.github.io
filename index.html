@@ -1,44 +1,22 @@
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<style>font-smooth: always;</style>
-</head>
-<body id="body" class="vsc-initialized" style="opacity: 1;background-image: none;margin-top: 0px;margin-right: 0px;margin-left: 0px;margin-bottom: 0px;">
-<script type="text/javascript" language="javascript">
-function eventWindowLoaded() {
-    canvasApp()
-}
-
-function canvasSupport(n) {
-    return !!n.getContext
-}
-
-function canvasApp() {
-    var n = document.getElementById("myCanvas");
-    if (canvasSupport(myCanvas)) {
-        var e = n.getContext("2d"),
-            t = n.width = window.innerWidth,
-            a = n.height = window.innerHeight,
-            b = Math.floor(t / 16 + 1),
-            i = Array(b).join(0).split("");
-        "undefined" != typeof Game_Interval && clearInterval(Game_interval), Game_Interval = setInterval(o, 50)
-    }
-
-    function o() {
-        e.fillStyle = "rgba(0,0,0,.20)", 
-		e.fillRect(0, 0, t, a), 
-		e.fillStyle = "#00FF00", 
-		e.font = "16px sans-serif", 
-		i.map(function(val, ind) {
-            text = String.fromCharCode(48 + 2 * Math.random()), x = 16 * ind, e.fillText(text, x, val), val > a * 10 * Math.random() ? i[ind] = 0 : i[ind] = val + 14
+<body style=margin:0><canvas id=q /></body>
+<script>
+    var q=document.getElementById('q'),
+    s=window.screen,
+    w=q.width=s.width,
+    h=q.height=s.height,
+    p=Array(170).join(1).split(''),
+    c=q.getContext("2d"),
+    m=Math;
+    setInterval(function() {
+        c.fillStyle="rgba(0,0,0,0.15)";
+        c.fillRect(0,0,w,h);
+        c.fillStyle="rgba(0,255,0,1)";
+        p=p.map(function(v,i) {
+            r=m.random();
+            c.font = "16px sans-serif",
+            c.fillText(String.fromCharCode(48 + 2 * Math.random()),i*17,v)
+            ;v+=17; 
+            return v>168+r*1e4?0:v
         })
-    }
-}
-window.addEventListener("load", eventWindowLoaded, !1);
-	</script>
-<canvas class="background" id="myCanvas" style="opacity: 1;background-image: none;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px;" width="100%" height="100%"></canvas>
-
-
-</body>
-</html>
+    },43)
+    </script>
